@@ -1,7 +1,7 @@
 package practice;
 
 import java.util.Scanner;
-
+// Only applicable for square matrix or array.
 public class arrays_methods {
     public static Scanner sc=new Scanner(System.in);
 
@@ -64,4 +64,50 @@ public class arrays_methods {
         arrayPrinter(ar);
     }
 
+    public static void PrintSpiral(int[][] arr) {
+        int rCol = arr.length - 1, lCol = 0;
+        int topRow = 0, bottomRow = arr.length - 1;
+        int elements = 1;
+        while (elements <= arr.length * arr.length) {
+//        Steps to print in spiral form
+//        1) topRow -> lCol to rCol.
+            for (int i = lCol; i <= rCol; i++) {
+               if(elements <= arr.length * arr.length){
+                   break;
+               }
+                System.out.print(arr[topRow][i] + " ");
+                elements++;
+            }
+            topRow++;
+//        2) lCol -> topRow to bottomRow.
+            for (int j = topRow; j <= bottomRow; j++) {
+                if(elements <= arr.length * arr.length){
+                    break;
+                }
+                System.out.print(arr[j][rCol] + " ");
+                elements++;
+            }
+            rCol--;
+//        3) bottomRow -> rCol to lCol.
+            for (int k = rCol; k >= lCol; k--) {
+                if(elements <= arr.length * arr.length){
+                    break;
+                }
+                System.out.print(arr[bottomRow][k]+" ");
+                elements++;
+            }
+            bottomRow--;
+//        4) rCol -> bottomRow to topRow.
+            for (int l = bottomRow; l >= topRow; l--) {
+                if(elements <= arr.length * arr.length){
+                    break;
+                }
+                System.out.print(arr[l][lCol] + " ");
+                elements++;
+            }
+            lCol++;
+        }
+    }
+
+    
 }
